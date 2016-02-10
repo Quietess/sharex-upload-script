@@ -20,17 +20,17 @@ $nofiles = 0;
     closedir($handle);
 }
  
-$key = "PUT_YOUR_PASSWORD_HERE";
+$key = "YOUR_PASSWORD_HERE";
 $uploadhost = "http://yourwebsite.com/";
 $redirect = "http://yourwebsite.com/";
   
-if (isset($_POST['k'])) {
-    if ($_POST['k'] == $key) {
-        $target = getcwd() . "/" . basename($_FILES['d']['name']);
-        if (move_uploaded_file($_FILES['d']['tmp_name'], $target)) {
-            $md5 = md5_file(getcwd() . "/" . basename($_FILES['d']['name']));
-            rename(getcwd() . "/" . basename($_FILES['d']['name']), getcwd() . "/i/" . $md5 . "." . end(explode(".", $_FILES["d"]["name"])));
-            echo $uploadhost . "i/" . $md5 . "." . end(explode(".", $_FILES["d"]["name"]));
+if (isset($_POST['user'])) {
+    if ($_POST['user'] == $key) {
+        $target = getcwd() . "/" . basename($_FILES['form']['name']);
+        if (move_uploaded_file($_FILES['form']['tmp_name'], $target)) {
+            $md5 = md5_file(getcwd() . "/" . basename($_FILES['form']['name']));
+            rename(getcwd() . "/" . basename($_FILES['form']['name']), getcwd() . "/i/" . $md5 . "." . end(explode(".", $_FILES["form"]["name"])));
+            echo $uploadhost . "i/" . $md5 . "." . end(explode(".", $_FILES["form"]["name"]));
         } else {
             echo "Sorry, there was a problem uploading your file.";
         }
